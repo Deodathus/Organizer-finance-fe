@@ -1,6 +1,6 @@
 import {
     Badge,
-    Box,
+    Box, Button,
     Container,
     Flex,
     Heading,
@@ -8,12 +8,36 @@ import {
     Spacer
 } from "@chakra-ui/react";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import organizerAuthFe from "../utils/dictionaries/routes/api/organizer-auth-fe";
+import UnsetUserSessionToken from "../services/user/UnsetUserSessionToken";
 
 export default function Header(props) {
     const titleCss = {
         color: '#FC8181'
     };
     const version = props.version;
+
+    const token = useSelector(state => state.user.me.token);
+
+    let logoutButton = '';
+    if (token !== null && token.length > 0) {
+        logoutButton = (
+            <>
+                <Box m={'3.5'}>
+                    <Button onClick={logOut}>
+                        Log Out
+                    </Button>
+                </Box>
+            </>
+        );
+    }
+
+    function logOut() {
+        UnsetUserSessionToken();
+
+        window.location.href = organizerAuthFe().logout;
+    }
 
     return (
         <>
@@ -27,6 +51,7 @@ export default function Header(props) {
                         </HStack>
                     </Box>
                     <Spacer />
+                    {logoutButton}
                 </Flex>
             </Container>
         </>
