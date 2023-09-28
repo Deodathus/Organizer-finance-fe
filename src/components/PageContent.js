@@ -5,9 +5,7 @@ export default function PageContent(props) {
         <>
             <Flex width={"99vw"} height={"85vh"} alignContent={"center"} justifyContent={"center"}>
                 <Center>
-                    <Box boxShadow='2xl' rounded='md' bg='white' className={'centredBox'}>
-                        {props.children}
-                    </Box>
+                    {props.children}
                 </Center>
             </Flex>
         </>

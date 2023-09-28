@@ -1,6 +1,7 @@
 import {useRoutes} from "react-router";
 import IndexLayout from "./layouts/IndexLayout";
 import {useSelector} from "react-redux";
+import AuthenticationLayout from "./layouts/AuthenticationLayout";
 
 export default function Router() {
 
@@ -12,10 +13,20 @@ export default function Router() {
         year
     };
 
-    return useRoutes([
-        {
-            path: '/',
-            element: <IndexLayout generalData={generalData} />
-        },
-    ]);
+    const token = useSelector((state) => state.user.me.token);
+    if (token !== null && token.length > 0) {
+        return useRoutes([
+            {
+                path: '/',
+                element: <IndexLayout generalData={generalData} />
+            },
+        ]);
+    } else {
+        return useRoutes([
+            {
+                path: '/',
+                element: <AuthenticationLayout generalData={generalData} />
+            }
+        ]);
+    }
 }
