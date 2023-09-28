@@ -14,6 +14,11 @@ export default function() {
                 one: host + 'api/finance/wallet/{walletId}',
                 all: host + 'api/finance/wallet'
             }
+        },
+        walletTransaction: {
+            fetch: {
+                all: host + 'api/finance/wallet/{walletId}/transaction'
+            }
         }
     };
 }

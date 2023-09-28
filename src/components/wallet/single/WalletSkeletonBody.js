@@ -1,5 +1,5 @@
 
-export default function WalletShowSkeletonBody() {
+export default function WalletSkeletonBody() {
     return (
         <>
             Skeleton

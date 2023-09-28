@@ -1,9 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
-import WalletShowBody from "./WalletShowBody";
+import WalletBody from "./WalletBody";
 import WalletFetchReducer from "../../../stores/reducers/wallet/WalletFetchReducer";
 import WalletFetchActionCreator from "../../../stores/actions/wallet/WalletFetchActionCreator";
-import WalletShowSkeletonBody from "./WalletShowSkeletonBody";
+import WalletSkeletonBody from "./WalletSkeletonBody";
+import {useEffect} from "react";
+import WalletTransactionFetchActionCreator
+    from "../../../stores/actions/walletTransaction/WalletTransactionFetchActionCreator";
+import WalletTransactionFetchReducer from "../../../stores/reducers/walletTransaction/WalletTransactionFetchReducer";
 
 export default function WalletShowComponent(props) {
     const dispatch = useDispatch();
@@ -18,6 +22,14 @@ export default function WalletShowComponent(props) {
         });
     });
 
+    useEffect(() => {
+        dispatch(
+            WalletTransactionFetchReducer.fetchAll(
+                WalletTransactionFetchActionCreator.fetchAll(walletId)
+            )
+        );
+    }, []);
+
     if (wallet == null) {
         dispatch(
             WalletFetchReducer.fetchOne(
@@ -25,8 +37,8 @@ export default function WalletShowComponent(props) {
             )
         );
 
-        return <WalletShowSkeletonBody />;
+        return <WalletSkeletonBody />;
     }
 
-    return <WalletShowBody wallet={wallet} />;
+    return <WalletBody wallet={wallet} />;
 }

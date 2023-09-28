@@ -18,6 +18,13 @@ const Types = {
             ALL_ERROR: 'WALLET|ALL_FETCH_ERROR',
             ALL_FINISHED: 'WALLET|ALL_FETCH_FINISHED'
         },
+    },
+    WALLET_TRANSACTION: {
+        FETCH: {
+            ALL_FETCH: 'WALLET_TRANSACTION|ALL_FETCH',
+            ALL_ERROR: 'WALLET_TRANSACTION|ALL_FETCH_ERROR',
+            ALL_FINISHED: 'WALLET_TRANSACTION|ALL_FETCH_FINISHED'
+        }
     }
 };
 
