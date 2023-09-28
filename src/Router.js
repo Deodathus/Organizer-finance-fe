@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import AuthenticationLayout from "./layouts/AuthenticationLayout";
 import WalletLayout from "./layouts/wallet/WalletLayout";
 import WalletList from "./components/wallet/WalletList";
+import WalletShowComponent from "./components/wallet/single/WalletShowComponent";
 
 export default function Router() {
 
@@ -26,7 +27,8 @@ export default function Router() {
                 path: '/wallets',
                 element: <WalletLayout generalData={generalData} />,
                 children: [
-                    { path: '', element: <WalletList /> }
+                    { path: '/wallets', element: <WalletList /> },
+                    { path: '/wallets/:walletId', element: <WalletShowComponent /> }
                 ]
             }
         ]);

@@ -12,7 +12,6 @@ export default function WalletLayout(props) {
     const dispatch = useDispatch();
 
     const generalData = props.generalData;
-    const user = useSelector(state => state.user.me);
 
     useEffect(() => {
         dispatch(
