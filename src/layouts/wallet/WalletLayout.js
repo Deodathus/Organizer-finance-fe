@@ -1,13 +1,26 @@
-import Header from "../components/Header";
 import {Box, Container, Divider, Grid, GridItem, SimpleGrid} from "@chakra-ui/react";
 import {Outlet} from "react-router";
-import Footer from "../components/Footer";
-import {useSelector} from "react-redux";
-import Menu from "../components/Menu";
+import {useDispatch, useSelector} from "react-redux";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Menu from "../../components/Menu";
+import {useEffect} from "react";
+import WalletFetchActionCreator from "../../stores/actions/wallet/WalletFetchActionCreator";
+import WalletFetchReducer from "../../stores/reducers/wallet/WalletFetchReducer";
 
-export default function IndexLayout(props) {
+export default function WalletLayout(props) {
+    const dispatch = useDispatch();
+
     const generalData = props.generalData;
     const user = useSelector(state => state.user.me);
+
+    useEffect(() => {
+        dispatch(
+            WalletFetchReducer.fetchAll(
+                WalletFetchActionCreator.fetchAll()
+            )
+        );
+    }, []);
 
     return (
         <>

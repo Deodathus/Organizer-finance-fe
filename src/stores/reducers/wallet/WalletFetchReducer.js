@@ -35,10 +35,12 @@ function fetchOneFinished(state, action) {
 
 function fetchOneError(state, action) {
     console.log(action.payload.error);
+
+    return state;
 }
 
 function fetchAll(action) {
-    async function fetchAllThunk(dispatch, getState) {
+    return async function fetchAllThunk(dispatch, getState) {
         await FetchWallets()
             .then(response => {
                 dispatch(WalletFetchActionCreator.fetchAllFinished(response.data));
@@ -51,12 +53,14 @@ function fetchAll(action) {
 function fetchAllFinished(state, action) {
     return {
         ...state,
-        elements: action.payload.wallets
+        elements: action.payload.items
     };
 }
 
 function fetchAllError(state, action) {
     console.log(action.payload.error)
+
+    return state;
 }
 
 export default {
