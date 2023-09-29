@@ -33,3 +33,21 @@
 .menuLink {
     color: #F56565;
 }
+
+.transactionCard {
+    margin: 0 5px;
+}
+
+.walletListItem {
+    margin: 5px;
+}
+
+@media (max-width: 425px) {
+    .transactionCard:first-child {
+        margin: 15px 0 5px 0;
+    }
+
+    .transactionCard {
+        margin: 5px 0;
+    }
+}

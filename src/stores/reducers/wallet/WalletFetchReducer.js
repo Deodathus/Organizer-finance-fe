@@ -51,9 +51,18 @@ function fetchAll(action) {
 }
 
 function fetchAllFinished(state, action) {
+    const wallets = action.payload.items;
+    let allWallets = [];
+
+    wallets.forEach(wallet => {
+        let walletId = wallet.id;
+
+        allWallets[walletId] = wallet;
+    });
+
     return {
         ...state,
-        elements: action.payload.items
+        elements: allWallets
     };
 }
 

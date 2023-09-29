@@ -15,7 +15,7 @@ export default function WalletList(props) {
 
     return (
         <>
-            <SimpleGrid spacing={4} templateColumns='repeat(5, 1fr)' gap={4}>
+            <SimpleGrid columns={{sm: 1, md: 2, lg: 4}}>
                 {renderedWallets}
             </SimpleGrid>
         </>
