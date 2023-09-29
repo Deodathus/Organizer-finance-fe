@@ -22,7 +22,7 @@ let preloadState = {
         elements: []
     },
     walletTransaction: {
-        elements: []
+
     }
 }
 

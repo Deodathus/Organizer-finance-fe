@@ -17,7 +17,7 @@ export default function() {
         },
         walletTransaction: {
             fetch: {
-                all: host + 'api/finance/wallet/{walletId}/transaction'
+                all: host + 'api/finance/wallet/{walletId}/transaction?perPage={perPage}&page={page}'
             }
         }
     };

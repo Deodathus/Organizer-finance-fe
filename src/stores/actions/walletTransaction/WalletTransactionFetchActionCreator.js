@@ -1,11 +1,14 @@
 import Types from "../../../utils/dictionaries/action/Types";
+import PaginatorEnum from "../../../utils/dictionaries/config/PaginatorEnum";
 
 
-function fetchAll(walletId) {
+function fetchAll(walletId, page = 1, perPage = PaginatorEnum.WALLET_TRANSACTION_PER_PAGE) {
     return {
         type: Types.WALLET_TRANSACTION.FETCH.ALL_FETCH,
         payload: {
-            walletId
+            walletId,
+            page,
+            perPage
         }
     };
 }
@@ -20,10 +23,13 @@ function fetchAllError(error) {
     };
 }
 
-function fetchAllFinished(transactions) {
+function fetchAllFinished(transactions, total) {
     return {
         type: Types.WALLET_TRANSACTION.FETCH.ALL_FINISHED,
-        payload: transactions
+        payload: {
+            transactions: transactions,
+            total: total
+        }
     };
 }
 

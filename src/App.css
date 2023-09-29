@@ -42,7 +42,16 @@
     margin: 5px;
 }
 
-@media (max-width: 425px) {
+.paginator {
+    text-align: center;
+    margin-top: 25px;
+}
+.paginator li {
+    display: inline;
+    padding: 5px;
+}
+
+@media (max-width: 991px) {
     .transactionCard:first-child {
         margin: 15px 0 5px 0;
     }

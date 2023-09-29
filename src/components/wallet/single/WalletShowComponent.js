@@ -8,9 +8,16 @@ import {useEffect} from "react";
 import WalletTransactionFetchActionCreator
     from "../../../stores/actions/walletTransaction/WalletTransactionFetchActionCreator";
 import WalletTransactionFetchReducer from "../../../stores/reducers/walletTransaction/WalletTransactionFetchReducer";
+import {useSearchParams} from "react-router-dom";
 
 export default function WalletShowComponent(props) {
     const dispatch = useDispatch();
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    let page = searchParams.get('page');
+    if (page == null) {
+        page = 1;
+    }
 
     const {walletId} = useParams();
 
@@ -25,10 +32,13 @@ export default function WalletShowComponent(props) {
     useEffect(() => {
         dispatch(
             WalletTransactionFetchReducer.fetchAll(
-                WalletTransactionFetchActionCreator.fetchAll(walletId)
+                WalletTransactionFetchActionCreator.fetchAll(
+                    walletId,
+                    page
+                )
             )
         );
-    }, []);
+    });
 
     if (wallet == null) {
         dispatch(
