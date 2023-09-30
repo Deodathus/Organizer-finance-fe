@@ -17,6 +17,12 @@ let preloadState = {
         me: {
             token: sessionStorage.getItem(Session.SESSION_STORAGE_API_TOKEN_KEY)
         }
+    },
+    wallet: {
+        elements: []
+    },
+    walletTransaction: {
+
     }
 }
 
