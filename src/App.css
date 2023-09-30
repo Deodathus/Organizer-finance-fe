@@ -60,3 +60,9 @@
         margin: 5px 0;
     }
 }
+
+@media (max-width: 425px) {
+    .walletBody {
+        margin-top: 5px;
+    }
+}
