@@ -1,4 +1,8 @@
 
+.title {
+    font-size: 22px;
+}
+
 .content {
     margin-top: 1%;
     min-height: calc(100vh - 120px);
@@ -16,7 +20,7 @@
     margin-bottom: 10px;
 }
 
-.signUpFormControl {
+.createWalletFormControl {
     margin-top: 10px;
     margin-bottom: 10px;
     max-width: 95%;
@@ -38,7 +42,8 @@
     margin: 0 5px;
 }
 
-.walletListItem {
+.walletListItem,
+.addWalletButton {
     margin: 5px;
 }
 
@@ -62,7 +67,11 @@
 }
 
 @media (max-width: 425px) {
-    .walletBody {
+    .centredBox {
+        padding: 30px 50px;
+    }
+
+    .pageBody {
         margin-top: 5px;
     }
 }

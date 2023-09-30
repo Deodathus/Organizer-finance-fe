@@ -5,6 +5,7 @@ import AuthenticationLayout from "./layouts/AuthenticationLayout";
 import WalletLayout from "./layouts/wallet/WalletLayout";
 import WalletList from "./components/wallet/WalletList";
 import WalletShowComponent from "./components/wallet/single/WalletShowComponent";
+import CreateWalletFormComponent from "./components/wallet/create/CreateWalletFormComponent";
 
 export default function Router() {
 
@@ -28,7 +29,8 @@ export default function Router() {
                 element: <WalletLayout generalData={generalData} />,
                 children: [
                     { path: '/wallets', element: <WalletList /> },
-                    { path: '/wallets/:walletId', element: <WalletShowComponent /> }
+                    { path: '/wallets/:walletId', element: <WalletShowComponent /> },
+                    { path: '/wallets/create', element: <CreateWalletFormComponent /> }
                 ]
             }
         ]);

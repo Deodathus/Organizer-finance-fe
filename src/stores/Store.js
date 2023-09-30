@@ -4,6 +4,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {applyMiddleware, createStore} from "redux";
 import thunkMiddleware from "redux-thunk";
 import RootReducer from "./reducers/RootReducer";
+import Status from "../utils/dictionaries/action/Status";
 
 
 let preloadState = {
@@ -19,10 +20,16 @@ let preloadState = {
         }
     },
     wallet: {
-        elements: []
+        elements: [],
+        process: {
+            store: Status.idle
+        }
     },
     walletTransaction: {
 
+    },
+    currency: {
+        elements: []
     }
 }
 
