@@ -1,35 +1,11 @@
 import {Box, Container, Divider, Grid, GridItem, SimpleGrid} from "@chakra-ui/react";
 import {Outlet} from "react-router";
-import {useDispatch} from "react-redux";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Menu from "../../components/Menu";
-import {useEffect} from "react";
-import WalletFetchActionCreator from "../../stores/actions/wallet/WalletFetchActionCreator";
-import WalletFetchReducer from "../../stores/reducers/wallet/WalletFetchReducer";
-import CurrencyFetchReducer from "../../stores/reducers/currency/CurrencyFetchReducer";
-import CurrencyFetchActionCreator from "../../stores/actions/currency/CurrencyFetchActionCreator";
 
 export default function WalletLayout(props) {
-    const dispatch = useDispatch();
-
     const generalData = props.generalData;
-
-    useEffect(() => {
-        dispatch(
-            WalletFetchReducer.fetchAll(
-                WalletFetchActionCreator.fetchAll()
-            )
-        );
-    }, []);
-
-    useEffect(() => {
-        dispatch(
-            CurrencyFetchReducer.fetchAll(
-                CurrencyFetchActionCreator.fetchAll()
-            )
-        );
-    }, []);
 
     return (
         <>
