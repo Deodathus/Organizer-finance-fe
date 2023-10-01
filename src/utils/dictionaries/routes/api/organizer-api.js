@@ -13,11 +13,19 @@ export default function() {
             fetch: {
                 one: host + 'api/finance/wallet/{walletId}',
                 all: host + 'api/finance/wallet'
+            },
+            store: {
+                one: host + 'api/finance/wallet'
             }
         },
         walletTransaction: {
             fetch: {
                 all: host + 'api/finance/wallet/{walletId}/transaction?perPage={perPage}&page={page}'
+            }
+        },
+        currency: {
+            fetch: {
+                all: host + 'api/finance/currency'
             }
         }
     };

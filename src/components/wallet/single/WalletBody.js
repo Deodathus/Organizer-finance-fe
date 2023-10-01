@@ -7,7 +7,7 @@ export default function WalletBody(props) {
 
     return (
         <>
-            <SimpleGrid columns={{sm:1, md: 1, lg: 2}} className='walletBody'>
+            <SimpleGrid columns={{sm:1, md: 1, lg: 2}} className='pageBody'>
                 <Box>
                     <WalletItem wallet={wallet} />
                 </Box>

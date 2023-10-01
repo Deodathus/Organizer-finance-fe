@@ -10,6 +10,12 @@ const Types = {
         },
     },
     WALLET: {
+        STORE: {
+            STORE: 'WALLET|STORE',
+            RESET_STATUS: 'WALLET|RESET_STORE_STATUS',
+            SUCCESS: 'WALLET|STORE_SUCCESS',
+            ERROR: 'WALLET|STORE_ERROR'
+        },
         FETCH: {
             ONE_FINISHED: 'WALLET|ONE_FETCH_FINISHED',
             ONE_ERROR: 'WALLET|ONE_FETCH_ERROR',
@@ -24,6 +30,13 @@ const Types = {
             ALL_FETCH: 'WALLET_TRANSACTION|ALL_FETCH',
             ALL_ERROR: 'WALLET_TRANSACTION|ALL_FETCH_ERROR',
             ALL_FINISHED: 'WALLET_TRANSACTION|ALL_FETCH_FINISHED'
+        }
+    },
+    CURRENCY: {
+        FETCH: {
+            ALL_FETCH: 'CURRENCY|ALL_FETCH',
+            ALL_ERROR: 'CURRENCY|ALL_ERROR',
+            ALL_FINISHED: 'CURRENCY|ALL_FINISHED'
         }
     }
 };

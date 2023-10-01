@@ -6,6 +6,7 @@ function get(url, body = {}, token = null) {
     if (!token) {
         token = sessionStorage.getItem(Session.SESSION_STORAGE_API_TOKEN_KEY);
     }
+
     return axios.get(url, {
         params: body,
         headers: {
@@ -15,6 +16,10 @@ function get(url, body = {}, token = null) {
 }
 
 function post(url, body, token = null, withFiles = true) {
+    if (!token) {
+        token = sessionStorage.getItem(Session.SESSION_STORAGE_API_TOKEN_KEY);
+    }
+
     return axios.post(url,
         JSON.stringify(body),
         {
