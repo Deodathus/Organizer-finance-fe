@@ -3,12 +3,10 @@ import WalletTransactionListItem from "./WalletTransactionListItem";
 import {Box, SimpleGrid} from "@chakra-ui/react";
 import ReactPaginate from "react-paginate";
 import {useNavigate} from "react-router";
-import {useSearchParams} from "react-router-dom";
 import PaginatorEnum from "../../utils/dictionaries/config/PaginatorEnum";
 
 export default function WalletTransactionsList(props) {
     const navigate = useNavigate();
-    const [searchParams, setSearchParams] = useSearchParams();
 
     const walletId = props.walletId;
     const transactions = useSelector(state => state.walletTransaction[walletId]);
@@ -38,9 +36,6 @@ export default function WalletTransactionsList(props) {
 
     return (
         <>
-            <SimpleGrid columns={{sm: 1, md: 1, lg: 3}}>
-                {renderedTransactions}
-            </SimpleGrid>
             <Box className='paginator'>
                 <ReactPaginate
                     renderOnZeroPageCount={null}
@@ -48,6 +43,9 @@ export default function WalletTransactionsList(props) {
                     pageCount={Math.ceil(totalPages)}
                 />
             </Box>
+            <SimpleGrid columns={{sm: 1, md: 1, lg: 3}}>
+                {renderedTransactions}
+            </SimpleGrid>
         </>
     );
 }

@@ -4,7 +4,7 @@ import WalletBody from "./WalletBody";
 import WalletFetchReducer from "../../../stores/reducers/wallet/WalletFetchReducer";
 import WalletFetchActionCreator from "../../../stores/actions/wallet/WalletFetchActionCreator";
 import WalletSkeletonBody from "./WalletSkeletonBody";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import WalletTransactionFetchActionCreator
     from "../../../stores/actions/walletTransaction/WalletTransactionFetchActionCreator";
 import WalletTransactionFetchReducer from "../../../stores/reducers/walletTransaction/WalletTransactionFetchReducer";
@@ -13,6 +13,7 @@ import {useSearchParams} from "react-router-dom";
 export default function WalletShowComponent(props) {
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
+    const [reload, setReload] = useState(0);
 
     let page = searchParams.get('page');
     if (page == null) {
@@ -40,6 +41,16 @@ export default function WalletShowComponent(props) {
         );
     });
 
+    function rerender() {
+        setReload(reload + 1);
+
+        dispatch(
+            WalletFetchReducer.fetchOne(
+                WalletFetchActionCreator.fetchOne(walletId)
+            )
+        );
+    }
+
     if (wallet == null) {
         dispatch(
             WalletFetchReducer.fetchOne(
@@ -50,5 +61,8 @@ export default function WalletShowComponent(props) {
         return <WalletSkeletonBody />;
     }
 
-    return <WalletBody wallet={wallet} />;
+    return <WalletBody
+        wallet={wallet}
+        rerenderFunction={rerender}
+    />;
 }

@@ -26,7 +26,9 @@ let preloadState = {
         }
     },
     walletTransaction: {
-
+        process: {
+            store: Status.idle
+        }
     },
     currency: {
         elements: []

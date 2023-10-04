@@ -15,12 +15,8 @@
     margin-bottom: 5px;
 }
 
-.signInFormControl {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.createWalletFormControl {
+.createWalletFormControl,
+.createWalletTransactionFormControl {
     margin-top: 10px;
     margin-bottom: 10px;
     max-width: 95%;
@@ -39,7 +35,7 @@
 }
 
 .transactionCard {
-    margin: 0 5px;
+    margin: 0 5px 5px 5px;
 }
 
 .walletListItem,
@@ -54,6 +50,10 @@
 .paginator li {
     display: inline;
     padding: 5px;
+}
+
+.createWalletTransactionForm {
+    margin-top: 10px;
 }
 
 @media (max-width: 991px) {
