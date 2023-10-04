@@ -6,6 +6,9 @@ import WalletLayout from "./layouts/wallet/WalletLayout";
 import WalletShowComponent from "./components/wallet/single/WalletShowComponent";
 import CreateWalletFormComponent from "./components/wallet/create/CreateWalletFormComponent";
 import WalletPageContent from "./components/wallet/WalletPageContent";
+import ExpenseLayout from "./layouts/expense/ExpenseLayout";
+import ExpensePageContent from "./components/expense/ExpensePageContent";
+import CreateExpenseCategoryFormComponent from "./components/expenseCategory/create/CreateExpenseCategoryFormComponent";
 
 export default function Router() {
 
@@ -31,6 +34,14 @@ export default function Router() {
                     { path: '/wallets', element: <WalletPageContent /> },
                     { path: '/wallets/:walletId', element: <WalletShowComponent /> },
                     { path: '/wallets/create', element: <CreateWalletFormComponent /> }
+                ]
+            },
+            {
+                path: '/expenses',
+                element: <ExpenseLayout generalData={generalData} />,
+                children: [
+                    { path: '/expenses', element: <ExpensePageContent /> },
+                    { path: '/expenses/category/create', element: <CreateExpenseCategoryFormComponent /> }
                 ]
             }
         ]);

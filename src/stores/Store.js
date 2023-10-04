@@ -32,6 +32,11 @@ let preloadState = {
     },
     currency: {
         elements: []
+    },
+    expenseCategory: {
+        process: {
+            store: Status.idle
+        },
     }
 }
 
