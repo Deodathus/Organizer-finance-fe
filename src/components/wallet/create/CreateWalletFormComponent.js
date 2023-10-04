@@ -5,18 +5,20 @@ import {
     Flex,
     FormControl,
     FormLabel,
-    Input,
+    Input, NumberInput, NumberInputField,
     SimpleGrid,
     Text,
     useToast
 } from "@chakra-ui/react";
 import Select from "react-select";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Status from "../../../utils/dictionaries/action/Status";
 import WalletCreateStatusActionCreator from "../../../stores/actions/wallet/WalletStoreStatusActionCreator";
 import WalletStoreReducer from "../../../stores/reducers/wallet/WalletStoreReducer";
 import WalletCreateActionCreator from "../../../stores/actions/wallet/WalletStoreActionCreator";
+import CurrencyFetchReducer from "../../../stores/reducers/currency/CurrencyFetchReducer";
+import CurrencyFetchActionCreator from "../../../stores/actions/currency/CurrencyFetchActionCreator";
 
 export default function CreateWalletFormComponent(props) {
     const toast = useToast();
@@ -30,6 +32,14 @@ export default function CreateWalletFormComponent(props) {
     let currencies = useSelector(state => state.currency.elements);
 
     handleStoreStatus();
+
+    useEffect(() => {
+        dispatch(
+            CurrencyFetchReducer.fetchAll(
+                CurrencyFetchActionCreator.fetchAll()
+            )
+        );
+    }, []);
 
     function handleStoreStatus() {
         useSelector(state => {
@@ -100,6 +110,21 @@ export default function CreateWalletFormComponent(props) {
         return result;
     }
 
+    function updateBalance(valueAsString) {
+        if (valueAsString === '') {
+            setBalance('');
+
+            return;
+        }
+
+        let newValue = parseFloat(valueAsString);
+        if (isNaN(newValue) && newValue == null) {
+            newValue = 0;
+        }
+
+        setBalance(newValue);
+    }
+
     return (
         <>
             <Flex alignContent={"start"} justifyContent={"start"} className='pageBody'>
@@ -117,7 +142,14 @@ export default function CreateWalletFormComponent(props) {
                             </FormControl>
                             <FormControl className={'createWalletFormControl'}>
                                 <FormLabel>Balance</FormLabel>
-                                <Input onChange={(e) => setBalance(e.target.value)} value={balance} name={'balance'} />
+                                <NumberInput
+                                    onChange={(value) => updateBalance(value)}
+                                    value={balance}
+                                    name={'balance'}
+                                    min={0}
+                                >
+                                    <NumberInputField />
+                                </NumberInput>
                             </FormControl>
                         </SimpleGrid>
                         <FormControl className={'createWalletFormControl'}>
