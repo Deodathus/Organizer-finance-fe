@@ -26,6 +26,11 @@ export default function() {
                 one: host + 'api/finance/wallet/{walletId}/transaction'
             }
         },
+        expenseCategory: {
+          store: {
+              one: host + 'api/finance/expense/category'
+          }
+        },
         currency: {
             fetch: {
                 all: host + 'api/finance/currency'

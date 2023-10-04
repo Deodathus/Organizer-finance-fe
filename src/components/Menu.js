@@ -8,7 +8,7 @@ export default function Menu(props) {
             <Box className={'menu'}>
                 <MenuLink name={'Home'} link={'/'} icon={FaHome} />
                 <MenuLink name={'Wallets'} link={'/wallets'} icon={FaWallet} />
-                <MenuLink name={'Transactions'} link={'/transactions'} icon={FaEnvelope} />
+                <MenuLink name={'Expenses'} link={'/expenses'} icon={FaEnvelope} />
                 <MenuLink name={'Setting'} link={'/settings'} icon={FaSlidersH} />
             </Box>
         </>

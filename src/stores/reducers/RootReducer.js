@@ -4,6 +4,7 @@ import UserReducer from "./user/UserReducer";
 import WalletReducer from "./wallet/WalletReducer";
 import WalletTransactionReducer from "./walletTransaction/WalletTransactionReducer";
 import CurrencyReducer from "./currency/CurrencyReducer";
+import ExpenseCategoryReducer from "./expenseCategory/ExpenseCategoryReducer";
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     user: UserReducer,
     wallet: WalletReducer,
     walletTransaction: WalletTransactionReducer,
-    currency: CurrencyReducer
+    currency: CurrencyReducer,
+    expenseCategory: ExpenseCategoryReducer,
 });
 
 export default rootReducer;
