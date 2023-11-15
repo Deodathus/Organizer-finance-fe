@@ -4,8 +4,11 @@ export default function() {
     let host;
 
     switch (process.env.REACT_APP_ENV) {
+        default:
         case Environment.DEV:
             host = 'http://127.0.0.1:8080/'
+        case Environment.PROD:
+            host = 'https://lil-develo.com/'
     }
 
     return {
