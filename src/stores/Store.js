@@ -10,7 +10,7 @@ import Status from "../utils/dictionaries/action/Status";
 let preloadState = {
     data: {
         general: {
-            version: '0.6.0',
+            version: '0.7.0',
             year: 2023
         }
     },
@@ -38,6 +38,11 @@ let preloadState = {
             store: Status.idle
         },
         elements: []
+    },
+    expense: {
+        process: {
+            store: Status.idle
+        }
     }
 }
 

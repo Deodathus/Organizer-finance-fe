@@ -57,6 +57,14 @@ const Types = {
             ALL_ERROR: 'EXPENSE_CATEGORY|ALL_ERROR',
             ALL_FINISHED: 'EXPENSE_CATEGORY|ALL_FINISHED'
         }
+    },
+    EXPENSE: {
+        STORE: {
+            STORE: 'EXPENSE|STORE',
+            RESET_STATUS: 'EXPENSE|RESET_STORE_STATUS',
+            SUCCESS: 'EXPENSE|STORE_SUCCESS',
+            ERROR: 'EXPENSE|STORE_ERROR'
+        },
     }
 };
 

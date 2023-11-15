@@ -6,6 +6,9 @@ import ExpenseCategoryFetchReducer from "../../stores/reducers/expenseCategory/E
 import ExpenseCategoryFetchActionCreator from "../../stores/actions/expenseCategory/ExpenseCategoryFetchActionCreator";
 import CurrencyFetchReducer from "../../stores/reducers/currency/CurrencyFetchReducer";
 import CurrencyFetchActionCreator from "../../stores/actions/currency/CurrencyFetchActionCreator";
+import CreateExpenseFormComponent from "./create/CreateExpenseFormComponent";
+import WalletFetchReducer from "../../stores/reducers/wallet/WalletFetchReducer";
+import WalletFetchActionCreator from "../../stores/actions/wallet/WalletFetchActionCreator";
 
 export default function ExpensePageContent() {
     const navigate = useNavigate();
@@ -27,6 +30,14 @@ export default function ExpensePageContent() {
         );
     }, []);
 
+    useEffect(() => {
+        dispatch(
+            WalletFetchReducer.fetchAll(
+                WalletFetchActionCreator.fetchAll()
+            )
+        );
+    }, []);
+
     function redirectToCreateWalletPage() {
         navigate('/expenses/category/create');
     }
@@ -38,6 +49,7 @@ export default function ExpensePageContent() {
                     <Button onClick={redirectToCreateWalletPage} variant='solid' colorScheme='orange' className='addWalletButton'>
                         Add category
                     </Button>
+                    <CreateExpenseFormComponent />
                 </Box>
             </>
         </>
