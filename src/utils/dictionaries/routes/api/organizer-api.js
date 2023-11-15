@@ -29,6 +29,9 @@ export default function() {
         expenseCategory: {
           store: {
               one: host + 'api/finance/expense/category'
+          },
+          fetch: {
+              all: host + 'api/finance/expense/category'
           }
         },
         currency: {
