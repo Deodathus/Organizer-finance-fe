@@ -38,6 +38,11 @@ export default function() {
             fetch: {
                 all: host + 'api/finance/currency'
             }
+        },
+        expense: {
+            store: {
+                one: host + 'api/finance/expense'
+            }
         }
     };
 }
