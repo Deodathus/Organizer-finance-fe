@@ -8,8 +8,10 @@ export default function () {
         default:
         case Environment.DEV:
             host = 'http://127.0.0.1:3002'
+            break;
         case Environment.PROD:
             host = 'https://auth.lil-develo.com'
+            break;
     }
 
     return {

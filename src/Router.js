@@ -9,6 +9,7 @@ import WalletPageContent from "./components/wallet/WalletPageContent";
 import ExpenseLayout from "./layouts/expense/ExpenseLayout";
 import ExpensePageContent from "./components/expense/ExpensePageContent";
 import CreateExpenseCategoryFormComponent from "./components/expenseCategory/create/CreateExpenseCategoryFormComponent";
+import PageNotFoundLayout from "./layouts/PageNotFoundLayout";
 
 export default function Router() {
 
@@ -43,6 +44,10 @@ export default function Router() {
                     { path: '/expenses', element: <ExpensePageContent /> },
                     { path: '/expenses/category/create', element: <CreateExpenseCategoryFormComponent /> }
                 ]
+            },
+            {
+                path: '*',
+                element: <PageNotFoundLayout generalData={generalData} shouldRedirectToMain={false} />
             }
         ]);
     } else {
@@ -50,7 +55,11 @@ export default function Router() {
             {
                 path: '/',
                 element: <AuthenticationLayout generalData={generalData} />
-            }
+            },
+            {
+                path: '*',
+                element: <PageNotFoundLayout generalData={generalData} shouldRedirectToMain={true} />
+            },
         ]);
     }
 }
