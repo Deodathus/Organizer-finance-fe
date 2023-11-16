@@ -1,4 +1,5 @@
 
 export default {
     WALLET_TRANSACTION_PER_PAGE: 25,
+    EXPENSE_PER_PAGE: 25
 };

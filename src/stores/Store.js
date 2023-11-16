@@ -10,7 +10,7 @@ import Status from "../utils/dictionaries/action/Status";
 let preloadState = {
     data: {
         general: {
-            version: '0.7.2',
+            version: '0.8.0',
             year: 2023
         }
     },
