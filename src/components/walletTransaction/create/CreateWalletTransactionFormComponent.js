@@ -5,7 +5,6 @@ import {
     FormControl,
     FormLabel,
     Input,
-    NumberInput, NumberInputField,
     SimpleGrid,
     Text,
     useToast
@@ -20,6 +19,7 @@ import WalletTransactionStoreStatusActionCreator
 import WalletTransactionStoreActionCreator
     from "../../../stores/actions/walletTransaction/WalletTransactionStoreActionCreator";
 import WalletTransactionStoreReducer from "../../../stores/reducers/walletTransaction/WalletTransactionStoreReducer";
+import DecimalNumberInput from "../../utils/number/DecimalNumberInput";
 
 export default function CreateWalletTransactionFormComponent(props) {
     const toast = useToast();
@@ -137,16 +137,11 @@ export default function CreateWalletTransactionFormComponent(props) {
                             </FormControl>
                             <FormControl className={'createWalletTransactionFormControl'}>
                                 <FormLabel>Amount</FormLabel>
-                                <NumberInput
-                                    onChange={(value) => updateAmount(value)}
+                                <DecimalNumberInput
                                     value={amount}
                                     name={'amount'}
-                                    min={0}
-                                    precision={2}
-                                    step={0.2}
-                                >
-                                    <NumberInputField />
-                                </NumberInput>
+                                    updateValueFunction={updateAmount}
+                                />
                             </FormControl>
                         </SimpleGrid>
                         <FormControl className={'createWalletTransactionFormControl'}>

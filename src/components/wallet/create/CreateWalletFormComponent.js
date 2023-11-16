@@ -5,7 +5,7 @@ import {
     Flex,
     FormControl,
     FormLabel,
-    Input, NumberInput, NumberInputField,
+    Input,
     SimpleGrid,
     Text,
     useToast
@@ -19,6 +19,7 @@ import WalletStoreReducer from "../../../stores/reducers/wallet/WalletStoreReduc
 import WalletCreateActionCreator from "../../../stores/actions/wallet/WalletStoreActionCreator";
 import CurrencyFetchReducer from "../../../stores/reducers/currency/CurrencyFetchReducer";
 import CurrencyFetchActionCreator from "../../../stores/actions/currency/CurrencyFetchActionCreator";
+import DecimalNumberInput from "../../utils/number/DecimalNumberInput";
 
 export default function CreateWalletFormComponent(props) {
     const toast = useToast();
@@ -117,12 +118,7 @@ export default function CreateWalletFormComponent(props) {
             return;
         }
 
-        let newValue = parseFloat(valueAsString);
-        if (isNaN(newValue) && newValue == null) {
-            newValue = 0;
-        }
-
-        setBalance(newValue);
+        setBalance(valueAsString);
     }
 
     return (
@@ -142,14 +138,11 @@ export default function CreateWalletFormComponent(props) {
                             </FormControl>
                             <FormControl className={'createWalletFormControl'}>
                                 <FormLabel>Balance</FormLabel>
-                                <NumberInput
-                                    onChange={(value) => updateBalance(value)}
+                                <DecimalNumberInput
+                                    updateValueFunction={updateBalance}
                                     value={balance}
                                     name={'balance'}
-                                    min={0}
-                                >
-                                    <NumberInputField />
-                                </NumberInput>
+                                />
                             </FormControl>
                         </SimpleGrid>
                         <FormControl className={'createWalletFormControl'}>
