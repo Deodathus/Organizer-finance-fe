@@ -117,12 +117,7 @@ export default function CreateWalletFormComponent(props) {
             return;
         }
 
-        let newValue = parseFloat(valueAsString);
-        if (isNaN(newValue) && newValue == null) {
-            newValue = 0;
-        }
-
-        setBalance(newValue);
+        setBalance(valueAsString);
     }
 
     return (
@@ -147,6 +142,8 @@ export default function CreateWalletFormComponent(props) {
                                     value={balance}
                                     name={'balance'}
                                     min={0}
+                                    precision={2}
+                                    step={0.2}
                                 >
                                     <NumberInputField />
                                 </NumberInput>
