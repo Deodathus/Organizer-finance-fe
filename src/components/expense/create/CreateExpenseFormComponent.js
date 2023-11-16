@@ -98,7 +98,7 @@ export default function CreateExpenseFormComponent(props) {
     function prepareWalletsOptions(wallets) {
         let result = [];
 
-        if (wallets !== null) {
+        if (wallets !== null && wallets !== undefined) {
             let firstWallet = wallets.find(wallet => wallet !== undefined && wallet !== null);
 
             if (firstWallet !== null) {
