@@ -59,6 +59,11 @@ const Types = {
         }
     },
     EXPENSE: {
+        FETCH: {
+            ALL_FETCH: 'EXPENSE|ALL_FETCH',
+            ALL_ERROR: 'EXPENSE|ALL_FETCH_ERROR',
+            ALL_FINISHED: 'EXPENSE|ALL_FETCH_FINISHED'
+        },
         STORE: {
             STORE: 'EXPENSE|STORE',
             RESET_STATUS: 'EXPENSE|RESET_STORE_STATUS',

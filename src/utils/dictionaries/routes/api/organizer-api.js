@@ -47,6 +47,9 @@ export default function() {
         expense: {
             store: {
                 one: host + 'api/finance/expense'
+            },
+            fetch: {
+                all: host + 'api/finance/expense?perPage={perPage}&page={page}'
             }
         }
     };
