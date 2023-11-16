@@ -17,6 +17,7 @@ import Status from "../../../utils/dictionaries/action/Status";
 import ExpenseStoreStatusActionCreator from "../../../stores/actions/expense/ExpenseStoreStatusActionCreator";
 import ExpenseStoreReducer from "../../../stores/reducers/expense/ExpenseStoreReducer";
 import ExpenseStoreActionCreator from "../../../stores/actions/expense/ExpenseStoreActionCreator";
+import DecimalNumberInput from "../../utils/number/DecimalNumberInput";
 
 export default function CreateExpenseFormComponent(props) {
     const toast = useToast();
@@ -162,16 +163,11 @@ export default function CreateExpenseFormComponent(props) {
                             </FormControl>
                             <FormControl className={'createExpenseFormControl'}>
                                 <FormLabel>Amount</FormLabel>
-                                <NumberInput
-                                    onChange={(value) => updateAmount(value)}
+                                <DecimalNumberInput
                                     value={amount}
                                     name={'amount'}
-                                    min={0}
-                                    precision={2}
-                                    step={0.2}
-                                >
-                                    <NumberInputField />
-                                </NumberInput>
+                                    updateValueFunction={updateAmount}
+                                />
                             </FormControl>
                         </SimpleGrid>
                         <FormControl className={'createExpenseFormControl'}>
