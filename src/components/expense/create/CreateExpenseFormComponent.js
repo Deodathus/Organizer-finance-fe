@@ -57,6 +57,8 @@ export default function CreateExpenseFormComponent(props) {
 
                     dispatch(ExpenseStoreStatusActionCreator.resetStoreExpenseStatus());
 
+                    props.rerenderFunction();
+
                     break;
                 case Status.error:
                     if (storeStatus !== Status.error) {

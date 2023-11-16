@@ -1,7 +1,7 @@
 import {Box, Button, SimpleGrid} from "@chakra-ui/react";
 import {useNavigate} from "react-router";
 import {useDispatch} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import ExpenseCategoryFetchReducer from "../../stores/reducers/expenseCategory/ExpenseCategoryFetchReducer";
 import ExpenseCategoryFetchActionCreator from "../../stores/actions/expenseCategory/ExpenseCategoryFetchActionCreator";
 import CurrencyFetchReducer from "../../stores/reducers/currency/CurrencyFetchReducer";
@@ -19,6 +19,8 @@ export default function ExpensePageContent() {
     const dispatch = useDispatch();
 
     const [searchParams, setSearchParams] = useSearchParams();
+
+    const [reload, setReload] = useState(0);
 
     let page = searchParams.get('page');
     if (page == null) {
@@ -61,6 +63,16 @@ export default function ExpensePageContent() {
         navigate('/expenses/category/create');
     }
 
+    function rerender() {
+        setReload(reload + 1);
+
+        dispatch(
+            ExpenseFetchReducer.fetchAll(
+                ExpenseFetchActionCreator.fetchAll(page)
+            )
+        );
+    }
+
     return (
         <>
             <>
@@ -69,7 +81,7 @@ export default function ExpensePageContent() {
                         <Button onClick={redirectToCreateWalletPage} variant='solid' colorScheme='orange' className='addWalletButton'>
                             Add category
                         </Button>
-                        <CreateExpenseFormComponent />
+                        <CreateExpenseFormComponent rerenderFunction={rerender} />
                     </Box>
                     <Box>
                         <ExpensesList />
