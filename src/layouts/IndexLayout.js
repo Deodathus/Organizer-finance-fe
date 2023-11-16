@@ -4,6 +4,7 @@ import {Outlet} from "react-router";
 import Footer from "../components/Footer";
 import {useSelector} from "react-redux";
 import Menu from "../components/Menu";
+import WalletPageContent from "../components/wallet/WalletPageContent";
 
 export default function IndexLayout(props) {
     const generalData = props.generalData;
@@ -26,6 +27,7 @@ export default function IndexLayout(props) {
                     </GridItem>
                     <GridItem colSpan={4} rowSpan={2}>
                         <Box>
+                            <WalletPageContent />
                             <Outlet />
                         </Box>
                     </GridItem>
