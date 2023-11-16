@@ -100,16 +100,12 @@ export default function CreateExpenseFormComponent(props) {
         let result = [];
 
         if (wallets !== null && wallets !== undefined) {
-            let firstWallet = wallets.find(wallet => wallet !== undefined && wallet !== null);
-
-            if (firstWallet !== null) {
-                Object.values(wallets).forEach(wallet => {
-                    result.push({
-                        value: wallet.id,
-                        label: wallet.name
-                    });
+            Object.values(wallets).forEach(wallet => {
+                result.push({
+                    value: wallet.id,
+                    label: wallet.name
                 });
-            }
+            });
         }
 
         return result;
